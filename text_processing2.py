@@ -74,5 +74,8 @@ def to_camel_case(underscore_str):
     camelcase_str = ''
     for split in splited:
         if split:
-            camelcase_str += split[0].upper() + split[1:]
-    return camelcase_str[0].lower() + camelcase_str[1:]
+            if split.isupper() or split.islower():
+                camelcase_str += split[0].upper() + split[1:].lower()
+            else:
+                camelcase_str += split[0].upper() + split[1:]
+    return camelcase_str[0].lower() + camelcase_str[1:] if camelcase_str else ''
